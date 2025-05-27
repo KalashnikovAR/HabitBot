@@ -6,7 +6,14 @@ from aiogram.filters import Command
 from aiogram.enums import ParseMode
 from dotenv import load_dotenv
 from database import init_db, get_db
+from config import BOT_TOKEN
 
+# Инициализация бота с проверкой
+if not BOT_TOKEN:
+    print("ОШИБКА: Токен бота не задан!")
+    exit(1)
+
+bot = Bot(token=BOT_TOKEN, parse_mode=ParseMode.HTML)
 # Настройка логов
 logging.basicConfig(level=logging.INFO)
 
