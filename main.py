@@ -13,7 +13,7 @@ if not BOT_TOKEN:
     print("ОШИБКА: Токен бота не задан!")
     exit(1)
 
-bot = Bot(token=BOT_TOKEN, parse_mode=ParseMode.HTML)
+bot = os.getenv('BOT_TOKEN')
 # Настройка логов
 logging.basicConfig(level=logging.INFO)
 
