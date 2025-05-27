@@ -5,7 +5,7 @@ from database import init_db
 import asyncio
 import os
 
-bot = Bot(token=BOT_TOKEN)
+bot = os.getenv("BOT_TOKEN")
 dp = Dispatcher()
 
 # Инициализация БД при старте
