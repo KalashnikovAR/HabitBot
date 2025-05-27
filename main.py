@@ -1,23 +1,19 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from config import BOT_TOKEN
-from database import *
+from database import init_db
+import asyncio
+import os
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
+# Инициализация БД при старте
+init_db()
 
-# Команда /start
 @dp.message(Command("start"))
 async def start(message: types.Message):
-    init_db()
-    await message.answer(
-        "⚡ Привет! Я PowerHabitBot!\n"
-        "Доступные команды:\n"
-        "/habits - Управление привычками\n"
-        "/todo - Список задач"
-    )
-
+    await message.answer("⚡ Бот запущен на Railway!")
 
 # --- Привычки ---
 @dp.message(Command("habits"))
@@ -84,8 +80,5 @@ async def todo(message: types.Message):
 async def main():
     await dp.start_polling(bot)
 
-
 if __name__ == "__main__":
-    import asyncio
-
     asyncio.run(main())
