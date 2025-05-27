@@ -1,9 +1,9 @@
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
+# Получаем токен из переменных окружения
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
-# Проверка токена перед использованием
-BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
-    raise ValueError("Токен бота не найден! Проверьте .env или переменные окружения")
+    print("❌ ОШИБКА: Токен бота не найден!")
+    print("ℹ️ Добавьте переменную BOT_TOKEN в настройках Railway")
+    exit(1)
